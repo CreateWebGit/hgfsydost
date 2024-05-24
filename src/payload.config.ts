@@ -1,3 +1,4 @@
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 // import { payloadCloud } from '@payloadcms/plugin-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -6,7 +7,12 @@ import { buildConfig } from 'payload/config'
 // import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { en } from 'payload/i18n/en'
+import { sv } from 'payload/i18n/sv'
+
 import { Users } from './collections/Users'
+import { Media } from './collections/Media'
+import { ElectedGroup } from './collections/ElectedGroup'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -15,7 +21,24 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users],
+  i18n: {
+    supportedLanguages: { en, sv },
+  },
+  collections: [Media, ElectedGroup, Users],
+  plugins: [
+    vercelBlobStorage({
+      enabled: true, // Optional, defaults to true
+      // Specify which collections should use Vercel Blob
+      collections: {
+        [Media.slug]: true,
+        [Media.slug]: {
+          disablePayloadAccessControl: true,
+        },
+      },
+      // Token provided by Vercel once Blob storage is added to your Vercel project
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+    }),
+  ],
   editor: lexicalEditor({}),
   // plugins: [payloadCloud()], // TODO: Re-enable when cloud supports 3.0
   secret: process.env.PAYLOAD_SECRET || '',
