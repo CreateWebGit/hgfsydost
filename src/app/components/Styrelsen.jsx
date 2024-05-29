@@ -53,8 +53,8 @@ const Styrelsen = ({ data }) => {
                           ))}
                         </div>
                       </div>
-                      <div>{person?.epost}</div>
-                      <div>{person?.phone}</div>
+                      <div>Epost: {person?.epost}</div>
+                      <div>Telefon: {person?.phone}</div>
                     </div>
                   ))}
                 </div>
