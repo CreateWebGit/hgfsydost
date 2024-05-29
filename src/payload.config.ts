@@ -13,6 +13,7 @@ import { sv } from 'payload/i18n/sv'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { ElectedGroup } from './collections/ElectedGroup'
+import { Associations } from './collections/Associations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -24,7 +25,7 @@ export default buildConfig({
   i18n: {
     supportedLanguages: { en, sv },
   },
-  collections: [Media, ElectedGroup, Users],
+  collections: [Media, ElectedGroup, Associations, Users],
   plugins: [
     vercelBlobStorage({
       enabled: true, // Optional, defaults to true

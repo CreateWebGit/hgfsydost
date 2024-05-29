@@ -1,5 +1,4 @@
 import { CollectionConfig } from 'payload/types'
-//import { Dinner } from "../blocks/Dinner";
 import { Styrelsemedlem } from '../blocks/Styrelsemedlem'
 export const ElectedGroup: CollectionConfig = {
   slug: 'electedgroup',
