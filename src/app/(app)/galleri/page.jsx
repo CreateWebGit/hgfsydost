@@ -1,6 +1,7 @@
 import GoogleMaps from '@/app/components/GoogleMaps'
 import React from 'react'
 
+/*
 async function getData() {
   const res = await fetch(
     'https://maps.googleapis.com/maps/api/geocode/json?address=Huvudskarsvagen14&key=AIzaSyCnB2gPvNPFmo5PNRBWl1Is-IVSsMkxSm4',
@@ -18,6 +19,7 @@ async function getData() {
 
   return data
 }
+*/
 
 /*
 export async function getServerSideProps() {
@@ -35,23 +37,19 @@ export async function getServerSideProps() {
 */
 
 const Galleri = async ({ users }) => {
-  const data = await getData()
+  // const data = await getData()
 
-  console.log('haha', data.results)
+  // console.log('haha', data.results)
 
   return (
     <div className="flex justify-center items-center h-screen">
       hej
-      {data.results.map((haha) => (
-        <>
-          <div className="mb-[200px]">haha{haha.address_components[0].long_name}</div>
-        </>
-      ))}
       {/*<GoogleMaps />*/}
     </div>
   )
 }
 
+/*
 Galleri.getInitialProps = async () => {
   const res = await fetch(
     'https://maps.googleapis.com/maps/api/geocode/json?address=Huvudskärsvägen14&key=AIzaSyCnB2gPvNPFmo5PNRBWl1Is-IVSsMkxSm4',
@@ -60,5 +58,6 @@ Galleri.getInitialProps = async () => {
   console.log('buu', data)
   return { users: data }
 }
+*/
 
 export default Galleri
